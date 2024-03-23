@@ -1,0 +1,56 @@
+// void insert(SkipList *L, long long k) {
+//   Node *prev[1000];
+//   Node *temp = L->head;
+//   int j = 0;
+//   while (temp->below != NULL) {
+//     while (temp->next != NULL && temp->next->value >= k) {
+//       temp = temp->next;
+//       if (temp->next != NULL && temp->next->value >= k) {
+//         j++;
+//         prev[j] = temp;
+//       }
+//     }
+//     if (temp->below != NULL) {
+//       j++;
+//       prev[j] = temp;
+//     }
+//     temp = temp->below;
+//   }
+//   while (temp->next != NULL && temp->next->value >= k) {
+//     temp = temp->next;
+//   }
+
+//   Node *newNode = create_node(k);
+//   if (temp->next != NULL) {
+//     newNode->next = temp->next;
+//   }
+//   temp->next = newNode;
+//   temp = newNode;
+//   int i = 1;
+//   // example: k = 15, need to build up 5 (base + 4) layers.
+//   while (coin_flip(k, i)) {
+//     printf("i: %d\n", i);
+//     Node *addNode = create_node(k);
+//     addNode->below = temp;
+//     temp = addNode;
+//     i++;
+//     if (j >= 0 && prev[j] != NULL) {
+//       if (prev[j]->next != NULL) {
+//         addNode->next = prev[j]->next;
+//         prev[j]->next = addNode;
+//       } else {
+//         prev[j]->next = addNode;
+//       }
+//     }
+//     j--;
+//     if (i - 1 > L->fastLayers) {
+//       Node *newHead = create_node(-1);
+//       newHead->next = addNode;
+//       addNode->next = NULL;
+//       newHead->below = L->head;
+//       L->head = newHead;
+//       L->fastLayers++;
+//     }
+//   }
+// }
+
