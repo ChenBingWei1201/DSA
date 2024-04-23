@@ -1,0 +1,3 @@
+execute script
+python3 ./testbench.py <executable name> <input file> <answer file>
+e.g. python3 ./testbench.py ./a.out input.txt answer.txt

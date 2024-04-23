@@ -1,0 +1,19 @@
+Given the pre-order and the post-order traversals of some binary tree with n nodes, design an O(n2 )-time and O(1)-extra-space algorithm to calculate the number of all possible binary trees that satisfy those traversals. You can assume that the given traversals are valid (i.e. can at least construct one binary tree) and have no duplicated key.
+
+function countTrees(preOrder, postOrder):
+    if preOrder is empty or postOrder is empty:
+        return 1
+    if length of preOrder is 1:
+        return 1
+
+    totalTrees = 0
+    for i from 1 to length of preOrder - 1:
+        // Find the matching segment in postOrder
+        segmentEnd = find corresponding segment end in postOrder for preOrder[1:i]
+        if segmentEnd is not -1:
+            // Calculate number of trees for left and right subtrees
+            leftTrees = countTrees(preOrder[1:i+1], postOrder[:segmentEnd+1])
+            rightTrees = countTrees(preOrder[i+1:], postOrder[segmentEnd+1:-1])
+            totalTrees += leftTrees * rightTrees
+
+    return totalTrees
